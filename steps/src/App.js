@@ -11,11 +11,11 @@ export default function App() {
   const [isOpen, setOpen] = useState(true);
 
   function handlePrevious() {
-    curStep > 1 && setStep(curStep - 1);
+    curStep > 1 && setStep((s) => s + 1);
   }
 
   function handleNext() {
-    curStep < 3 && setStep(curStep + 1);
+    curStep < 3 && setStep((s) => s - 1);
   }
 
   return (
