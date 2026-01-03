@@ -11,11 +11,11 @@ export default function App() {
   const [isOpen, setOpen] = useState(true);
 
   function handlePrevious() {
-    curStep > 1 && setStep((s) => s - 1);
+    curStep > 1 && setStep((s) => s + 1);
   }
 
   function handleNext() {
-    curStep < 3 && setStep((s) => s + 1);
+    curStep < 3 && setStep((s) => s - 1);
   }
 
   return (
@@ -36,27 +36,21 @@ export default function App() {
           </div>
 
           <div className="buttons">
-            <Button bgColor="#7950f2" color="#fff" handleFun={handlePrevious}>
-              👈 Previous
-            </Button>
-
-            <Button bgColor="#7950f2" color="#fff" handleFun={handleNext}>
-              Next 👉
-            </Button>
+            <button
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              onClick={handlePrevious}
+            >
+              Previous
+            </button>
+            <button
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              onClick={handleNext}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-function Button({ bgColor, color, handleFun, children }) {
-  return (
-    <button
-      style={{ backgroundColor: bgColor, color: color }}
-      onClick={handleFun}
-    >
-      {children}
-    </button>
   );
 }
