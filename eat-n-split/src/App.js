@@ -46,8 +46,8 @@ export default function App() {
       friends.map((friend) =>
         friend.id === selectedFriend.id
           ? { ...friend, balance: friend.balance + value }
-          : friend
-      )
+          : friend,
+      ),
     );
     setSelectedFriend(null);
   }
@@ -67,7 +67,11 @@ export default function App() {
       </div>
 
       {selectedFriend && (
-        <FormSplitBill friend={selectedFriend} onSubmitBill={handleBillSplit} />
+        <FormSplitBill
+          friend={selectedFriend}
+          onSubmitBill={handleBillSplit}
+          key={selectedFriend.id}
+        />
       )}
     </div>
   );
@@ -198,7 +202,9 @@ function FormSplitBill({ friend, onSubmitBill }) {
         value={yourExpense}
         onChange={(e) =>
           setYourExpense(
-            Number(e.target.value) > bill ? yourExpense : Number(e.target.value)
+            Number(e.target.value) > bill
+              ? yourExpense
+              : Number(e.target.value),
           )
         }
       />
